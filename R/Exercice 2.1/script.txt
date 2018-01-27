@@ -1,0 +1,21 @@
+matrice = matrix(c(36,99,96,24,121,24),2,3,byrow=TRUE)
+matrice
+rownames(matrice)=c("oui","non")
+matrice
+colnames(matrice)=c("Jeunes","Adultes","Anciens")
+matrice
+sum(matrice)
+barplot(matrice,legend=rownames(matrice), beside=T)
+n=sum(matrice)
+ni.1 = margin.table(matrice,1)
+n.j1 = margin.table(matrice, 2)
+freqtab=round((matrice/sum(matrice)*100),2)
+freqtab
+sum(freqtab)
+matrice/as.vector(ni.1)
+margin.table(matrice/as.vector(ni.1),1)
+effth1=t(n.j1%*%t(ni.1)/400)
+matrice-effth1
+sum((matrice-effth1)^2/effth1)
+sqrt(sum((matrice-effth1)^2/effth1)/400)
+chisq.test(matrice)

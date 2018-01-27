@@ -1,0 +1,25 @@
+brochet=data.frame("Age"=c(2,2,2,3,3,3,4,4,4,5,5,5,6,6),"TxDDT"=c(0.20,0.25,0.18,0.19,0.29,0.28,0.31,0.33,0.36,0.71,0.38,0.47,1.10,0.83))
+brochet
+par(mfrow=c(1,2))
+plot(brochet$age,brochet$TxDDT)
+plot(brochet$age,brochet$logTx)
+brochet
+brochet.lm=lm(brochet$TxDDT~brochet$Age)
+par(mfrow=c(1,1))
+plot(brochet$Age, brochet$TxDDT)
+abline(brochet.lm$coefficients, col="red")
+par(mfrow=c(2,2))
+plot(brochet.lm)
+brochet.lm1
+par(mfrow=c(1,1))
+plot(brochet$Age,brochet$logTx)
+abline(brochet.lm1$coefficients,co
+par(mfrow=c(2,2))
+plot(brochet.lm1)
+par(mfrow=c(1,1))
+plot(brochet$Age,brochet$TxDDT)
+brochet.lm=lm(brochet$TxDDT~brochet$Age)
+abline(brochet.lm$coefficients,col="red")
+cor(brochet$TxDDT,brochet$Age)
+par(mfrow=c(2,2))
+plot(brochet.lm1)

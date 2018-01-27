@@ -1,0 +1,50 @@
+package Vente;
+
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map.Entry;
+
+import Bien.Bien;
+import Client.Client;
+import Client.Voeux;
+import Client.VoeuxAppart;
+import Client.VoeuxMaison;
+import Client.VoeuxTerrain;
+import java.lang.Iterable;
+
+
+public class Agence {
+	HashMap<Integer, Bien> catalogue=new HashMap<>();
+	HashMap<Integer, Client> repertoire=new HashMap<>();
+	private String nom;
+	
+	public Agence(String nom) {
+		this.nom=nom;
+	}
+	
+	public void choisirBien(Voeux souhait) {
+		if(souhait instanceof VoeuxMaison) {
+			for(Entry<Integer, Bien> b : this.catalogue.entrySet()) {
+				if (b.getValue().type == Bien.TypeBien.Maison  && b.getValue().localisation==souhait.localisation &&  b.getValue().prix==souhait.prix) {
+					System.out.println("La maison "+ b.getValue().numInterne+" correspond à votre recherche");
+				}
+			}
+		}
+		
+		if(souhait instanceof VoeuxAppart) {
+			for(Entry<Integer, Bien> b : this.catalogue.entrySet()) {
+				if (b.getValue().type == Bien.TypeBien.Appartement &&  b.getValue().nbPieces == souhait.surface &&  b.getValue().localisation==souhait.localisation &&  b.getValue().prix==voeux.prix) {
+					System.out.println("L'appartement "+b.numInterne+" correspond à votre recherche");
+				}
+			}
+		}
+		
+		if(souhait instanceof VoeuxTerrain) {
+			for(Entry<Integer, Bien> b : this.catalogue.entrySet()) {
+				if ( b.getValue().type ==  Bien.TypeBien.Terrain &&  b.getValue().surface == souhait.surface  &&  b.getValue().localisation==souhait.localisation &&  b.getValue().prix==voeux.prix) {
+					System.out.println("La terrain "+b.numInterne+" correspond à votre recherche");
+				}
+			}
+		}		
+	}
+}

@@ -1,0 +1,11 @@
+x=matrix(c(84,97,60,55,40,75,45,45,96,85,84,66),3,4,byrow=T)
+rownames(x)=c("Agriculteurs","Cadres","Employés")
+colnames(x)=c("Prod1","Prod2","Prod3","Prod4")
+ni.=margin.table(x,1)
+n.j=margin.table(x,2)
+x/as.vector(ni.)
+effth=t(n.j%*%t(ni.))/sum(x)
+effth
+chisq.test(x)$expected
+chisq.test(x)
+sqrt(12.918/(sum(x)*2))
