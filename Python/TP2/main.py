@@ -1,73 +1,74 @@
 import copy
 
+
 class listePriorite:
-  def __init__ (self):
-    self.__liste=[]
+    def __init__(self):
+        self.__liste = []
 
-  @property
-  def empty(self):
-    return(len(self.__liste)==0)
+    @property
+    def empty(self):
+        return (len(self.__liste) == 0)
 
-  @property
-  def prio_min(self):
-    if(self.empty==False):
-      return self.__liste[0][0]
-    return None
+    @property
+    def prio_min(self):
+        if (self.empty == False):
+            return self.__liste[0][0]
+        return None
 
-  @property
-  def prio_max(self):
-    if(self.empty==False):
-      return self.__liste[-1][0]
-    return None
+    @property
+    def prio_max(self):
+        if (self.empty == False):
+            return self.__liste[-1][0]
+        return None
 
-  def add(self, priorite, nom):
-    compteur=-1
-    if self.empty:
-      self.__liste.append((priorite, nom))
-    else:
-      if priorite > self.prio_max:
-        self.__liste.append((priorite, nom))
-      else:
-        for i in self.__liste:
-          compteur+=1
-          if (priorite<i[0]):
-            self.__liste.insert(compteur,(priorite, nom))
-            break
+    def add(self, priorite, nom):
+        compteur = -1
+        if self.empty:
+            self.__liste.append((priorite, nom))
+        else:
+            if priorite > self.prio_max:
+                self.__liste.append((priorite, nom))
+            else:
+                for i in self.__liste:
+                    compteur += 1
+                    if (priorite < i[0]):
+                        self.__liste.insert(compteur, (priorite, nom))
+                        break
 
-  def contains(self, nom):
-    return nom in [element[1] for element in self.__liste]
-    
-  def priorities_of(self, nom):
-    return [x[0] for x in self.__liste if x[1] == nom]
+    def contains(self, nom):
+        return nom in [element[1] for element in self.__liste]
 
-  def __str__(self):
-    return str(self.__liste)
-    
-  def pop(self):
-    return self.__liste.pop()
-    
-    
-  def items(self):
-    return [x for x in self.__liste]
-  
-  def vals(self):
-    value=None
-    if(self.empty==False):
-      value=[]
-      compteur=0
-      for i in self.__liste:
-        value.append(i[1])
-    return value
-  
-  @property
-  def length(self):
-    return len(self.__liste)
+    def priorities_of(self, nom):
+        return [x[0] for x in self.__liste if x[1] == nom]
 
-  def at(self, numeroTuple):
-    return self.__liste[numeroTuple]
-    
-  def delete(self, numeroTuple):
-    del self.__liste[numeroTuple]
+    def __str__(self):
+        return str(self.__liste)
+
+    def pop(self):
+        return self.__liste.pop()
+
+    def items(self):
+        return [x for x in self.__liste]
+
+    def vals(self):
+        value = None
+        if (self.empty == False):
+            value = []
+            compteur = 0
+            for i in self.__liste:
+                value.append(i[1])
+        return value
+
+    @property
+    def length(self):
+        return len(self.__liste)
+
+    def at(self, numeroTuple):
+        return self.__liste[numeroTuple]
+
+    def delete(self, numeroTuple):
+        del self.__liste[numeroTuple]
+
 
 daltons = listePriorite()
 print(daltons.empty)  # True
@@ -116,18 +117,5 @@ print(f"priorité min = {daltons.prio_min}, priorité max = {daltons.prio_max}")
 
 outlaws = copy.deepcopy(daltons)
 daltons.delete(0)
-print(daltons)    # [(1, 'Ma'), (3, 'Averell'), (4, 'William')]
-print(outlaws)    # [(1, 'Jack'), (1, 'Ma'), (3, 'Averell'), (4, 'William')]
-
-
-
-
-
-
-
-
-
-
-
-
-
+print(daltons)  # [(1, 'Ma'), (3, 'Averell'), (4, 'William')]
+print(outlaws)  # [(1, 'Jack'), (1, 'Ma'), (3, 'Averell'), (4, 'William')]
