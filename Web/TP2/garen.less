@@ -1,4 +1,28 @@
-article.col-md-4.thumbnail{
-  background-color : black;
-  color : white;
+.thumb{
+  animation-name: dropCards;
+  animation-timing-function: ease;
+  animation-duration: 1s;
+  width: 300px;
+  .container{
+    background-color:black;
+  }
+  .thumbnail{
+    background-color:black;
+    //background-image: url(http://fanboygaming.com/wp-content/uploads/2015/03/league-of-legends-449244.jpg);
+    transition: transform 1s;
+    transition-timing-function: ease;
+    img{
+      opacity:0;
+      transition: opacity 1s, transform 1s;
+      width:300px;
+    }
+  }
+}
+.thumb:hover{
+  .thumbnail{
+    img{
+      transform: rotateX(180deg);
+      opacity: 1;
+    }
+  }
 }
